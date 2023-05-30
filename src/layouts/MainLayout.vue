@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 const drawer = ref(false);
-const miniState = ref(true);
+const router = useRouter();
 
-// const teste = await Api('get');
-// console.log(teste);
-// use <Suspense> when call componentes with work with async methods inside script setup
+const logout = () => {
+  localStorage.removeItem('token');
+  router.push('/login');
+};
 </script>
 
 <template>
@@ -93,6 +95,7 @@ const miniState = ref(true);
                     label="Logout"
                     push
                     size="sm"
+                    @click="logout"
                   />
                 </div>
               </div>
